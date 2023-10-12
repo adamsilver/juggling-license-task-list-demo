@@ -1,0 +1,61 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Your application" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">{{pageName}}</h1>
+
+      <h2 class="govuk-heading-s govuk-!-margin-top-6 govuk-!-margin-bottom-2">
+        Application incomplete
+      </h2>
+      <p class="govuk-!-margin-bottom-6">You’ve completed 0 of 3 sections.</p>
+
+       {{ appTaskList({
+        disableSectionNumbering: true,
+        sections: [{
+          titleText: "About you",
+          items: [{
+            text: "Personal details",
+            href: "/",
+            tag: {
+              colour: "grey",
+              text: "Not started"
+            }
+          }]
+        }, {
+          titleText: "Juggling experience",
+          items: [{
+            text: "Juggling experience",
+            href: "/",
+            tag: {
+              colour: "grey",
+              text: "Not started"
+            }
+          }]
+        }, {
+          titleText: "Evidence",
+          items: [{
+            text: "Evidence",
+            href: "/",
+            tag: {
+              colour: "grey",
+              text: "Not started"
+            }
+          }]
+        }]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Review application
+      </h2>
+
+      {{ govukButton({
+        text: "Review and send",
+        href: '/application/check'
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}

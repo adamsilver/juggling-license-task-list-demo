@@ -29,3 +29,5 @@ router.post('/email-address', (req, res) => {
 router.post('/code', (req, res) => {
   res.redirect('/application')
 })
+
+require('./routes/application/show')(router)
