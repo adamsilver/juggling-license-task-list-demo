@@ -1,0 +1,93 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Address" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" novalidate>
+
+        <span class="govuk-caption-l">
+          Personal details
+        </span>
+        {% call govukFieldset({
+          legend: {
+            text: pageName,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        }) %}
+
+          {{ govukInput({
+            id: "personalDetails[address][line1]",
+            name: "personalDetails[address][line1]",
+            label: {
+              text: "Address line 1",
+              classes: 'govuk-label--m'
+            },
+            value: data.personalDetails.address.line1,
+            autocomplete: "address-line1"
+          }) }}
+
+          {{ govukInput({
+            id: "personalDetails[address][line2]",
+            name: "personalDetails[address][line2]",
+            label: {
+              text: "Address line 2 (optional)",
+              classes: 'govuk-label--m'
+            },
+            value: data.personalDetails.address.line2,
+            autocomplete: "address-line2"
+          }) }}
+
+          {{ govukInput({
+            id: "personalDetails[address][town]",
+            name: "personalDetails[address][town]",
+            label: {
+              text: "Town or city",
+              classes: 'govuk-label--m'
+            },
+            value: data.personalDetails.address.town,
+            autocomplete: "address-level2",
+            classes: "govuk-!-width-two-thirds"
+          }) }}
+
+          {{ govukInput({
+            id: "personalDetails[address][county]",
+            name: "personalDetails[address][county]",
+            label: {
+              text: "County (optional)",
+              classes: 'govuk-label--m'
+            },
+            value: data.personalDetails.address.county,
+            classes: "govuk-!-width-two-thirds"
+          }) }}
+
+          {{ govukInput({
+            id: "personalDetails[address][postcode]",
+            name: "personalDetails[address][postcode]",
+            label: {
+              text: "Postcode",
+              classes: 'govuk-label--m'
+            },
+            value: data.personalDetails.address.postcode,
+            autocomplete: "postal-code",
+            classes: "govuk-input--width-10"
+          }) }}
+
+        {% endcall %}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}
