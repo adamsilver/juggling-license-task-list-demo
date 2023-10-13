@@ -1,0 +1,63 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "When did you start juggling?" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post">
+        <span class="govuk-caption-l">
+          Juggling experience
+        </span>
+        {{ govukDateInput({
+          id: "experience[startDate]",
+          fieldset: {
+            legend: {
+              text: pageName,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "For example, 31 3 2021"
+          },
+          items: [
+            {
+              name: "experience[startDate][day]",
+              label: "Day",
+              value: data.experience.startDate.day,
+              classes: "govuk-input--width-2"
+            },
+            {
+              name: "experience[startDate][month]",
+              label: "Month",
+              value: data.experience.startDate.month,
+              classes: "govuk-input--width-2"
+            },
+            {
+              name: "experience[startDate][year]",
+              label: "Year",
+              value: data.experience.startDate.year,
+              classes: "govuk-input--width-4"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

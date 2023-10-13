@@ -20,15 +20,15 @@
             text: "Personal details",
             href: "/application/edit-personal-details/name",
             tag: {
-              colour: "grey",
-              text: "Not started"
+              colour: data.personalDetails.status | statusColour,
+              text: data.personalDetails.status or "Not started"
             }
           }]
         }, {
           titleText: "Juggling experience",
           items: [{
             text: "Juggling experience",
-            href: "/",
+            href: "/application/edit-experience/juggling-balls",
             tag: {
               colour: "grey",
               text: "Not started"
