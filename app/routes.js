@@ -39,3 +39,4 @@ router.get('/account/sign-out', (req, res) => {
 require('./routes/application/show')(router)
 require('./routes/application/edit-personal-details')(router)
 require('./routes/application/edit-experience')(router)
+require('./routes/application/edit-evidence')(router)
