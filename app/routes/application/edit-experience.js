@@ -12,4 +12,8 @@ module.exports = router => {
     res.redirect('/application/edit-experience/check')
   })
 
+  router.post('/application/edit-experience/check', (req, res) => {
+    res.redirect('/application')
+  })
+
 }

@@ -30,8 +30,8 @@
             text: "Juggling experience",
             href: "/application/edit-experience/juggling-balls",
             tag: {
-              colour: "grey",
-              text: "Not started"
+              colour: data.experience.status | statusColour,
+              text: data.experience.status or "Not started"
             }
           }]
         }, {

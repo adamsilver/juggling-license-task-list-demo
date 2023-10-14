@@ -79,7 +79,7 @@
       <form method="post" novalidate>
 
         {{ govukRadios({
-          name: "personalDetails[status]",
+          name: "experience[status]",
           fieldset: {
             legend: {
               text: "Have you completed this section?",
@@ -100,7 +100,7 @@
               text: "No, I’ll come back to it later"
             }
           ],
-          value: data.personalDetails.status
+          value: data.experience.status
         }) }}
 
         {{ govukButton({
