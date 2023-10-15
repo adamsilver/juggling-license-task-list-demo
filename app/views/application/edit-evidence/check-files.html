@@ -23,7 +23,25 @@
         Files added
       </h2>
 
-      <p>Files go here</p>
+      <dl class="govuk-summary-list">
+
+        {% for fileId, file in data.evidence.files %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              File {{loop.index}}
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <a href="#">{{file.filename}}</a>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="/application/edit-evidence/{{fileId}}/delete">
+                Delete<span class="govuk-visually-hidden"> {{file.filename}}</span>
+              </a>
+            </dd>
+          </div>
+        {% endfor %}
+      </dl>
 
       <form method="post">
         {{ govukRadios({
@@ -34,7 +52,6 @@
               classes: "govuk-fieldset__legend--m"
             }
           },
-          value: data.evidence.addMore,
           items: [
             {
               value: "Yes",
