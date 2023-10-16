@@ -7,10 +7,12 @@
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">{{pageName}}</h1>
 
-      <h2 class="govuk-heading-s govuk-!-margin-top-6 govuk-!-margin-bottom-2">
-        Application incomplete
-      </h2>
-      <p class="govuk-!-margin-bottom-6">You’ve completed 0 of 3 sections.</p>
+      {% if completedSectionsCount < 3 %}
+        <h2 class="govuk-heading-s govuk-!-margin-top-6 govuk-!-margin-bottom-2">
+          Application incomplete
+        </h2>
+        <p class="govuk-!-margin-bottom-6">You’ve completed {{completedSectionsCount}} of 3 sections.</p>
+      {% endif %}
 
        {{ appTaskList({
         disableSectionNumbering: true,
