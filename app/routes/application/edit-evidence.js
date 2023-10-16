@@ -59,6 +59,8 @@ module.exports = router => {
 
     let filesCount = _.size(req.session.data.evidence.files)
 
+    req.flash('success', 'File deleted')
+
     if(filesCount > 0) {
       res.redirect('/application/edit-evidence/check-files')
     } else {
