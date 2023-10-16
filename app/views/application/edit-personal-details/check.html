@@ -11,10 +11,6 @@
 
 {% block content %}
 
-  {% set address %}
-    {{appAddress({ address: data.personalDetails.address })}}
-  {% endset %}
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <span class="govuk-caption-l">
@@ -24,61 +20,7 @@
         {{pageName}}
       </h1>
 
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Your name"
-            },
-            value: {
-              text: data.personalDetails.firstName + " " + data.personalDetails.lastName
-            },
-            actions: {
-              items: [
-                {
-                  href: '/application/edit-personal-details/name',
-                  text: "Change",
-                  visuallyHiddenText: "Your name"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Phone number"
-            },
-            value: {
-              text: data.personalDetails.telephone
-            },
-            actions: {
-              items: [
-                {
-                  href: '/application/edit-personal-details/telephone',
-                  text: "Change",
-                  visuallyHiddenText: "Phone number"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Address"
-            },
-            value: {
-              html: address
-            },
-            actions: {
-              items: [
-                {
-                  href: "/application/edit-personal-details/address",
-                  text: "Change",
-                  visuallyHiddenText: "Address"
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
+      {% include "./_answers.html" %}
 
       <form method="post" novalidate>
 

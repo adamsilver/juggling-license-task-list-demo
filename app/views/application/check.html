@@ -1,0 +1,51 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Check details and send application" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/application"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        {{pageName}}
+      </h1>
+
+
+      <h2 class="govuk-heading-m">Personal details</h2>
+      {% include "./edit-personal-details/_answers.html" %}
+
+      <h2 class="govuk-heading-m">Juggling experience</h2>
+      {% include "./edit-experience/_answers.html" %}
+
+      <h2 class="govuk-heading-m">Evidence</h2>
+      {% include "./edit-evidence/_answers.html" %}
+
+      <h2 class="govuk-heading-m">
+        Declaration
+      </h2>
+
+      <p>By sending this application, you agree that:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>your answers are true to the best of your knowledge and belief</li>
+        <li>you have the necessary permission to share any evidence</li>
+        <li>you may need to attend a telephone call to discuss your application</li>
+      </ul>
+
+      <form method="post" novalidate>
+        {{ govukButton({
+          text: "Agree and send application"
+        }) }}
+      </form>
+
+
+    </div>
+  </div>
+{% endblock %}

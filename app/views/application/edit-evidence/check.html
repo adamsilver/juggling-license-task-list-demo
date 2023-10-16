@@ -20,54 +20,7 @@
         {{pageName}}
       </h1>
 
-      {% set files %}
-        <ul class="govuk-list govuk-list--bullet">
-          {% for fileId, file in data.evidence.files %}
-            <li>
-              <a href="#">{{file.filename}}</a>
-            </li>
-          {% endfor %}
-        </ul>
-      {% endset %}
-
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Do you have evidence to upload?"
-            },
-            value: {
-              html: data.evidence.hasEvidence
-            },
-            actions: {
-              items: [
-                {
-                  href: '/application/edit-evidence/has-evidence',
-                  text: "Change",
-                  visuallyHiddenText: "if you have evidence to upload"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Uploaded evidence"
-            },
-            value: {
-              html: files
-            },
-            actions: {
-              items: [
-                {
-                  href: '/application/edit-evidence/check-files',
-                  text: "Change",
-                  visuallyHiddenText: "uploaded evidence"
-                }
-              ]
-            }
-          } if data.evidence.hasEvidence == 'Yes'
-        ]
-      }) }}
+      {% include "./_answers.html" %}
 
       <form method="post" novalidate>
 

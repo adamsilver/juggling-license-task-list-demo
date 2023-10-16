@@ -1,0 +1,59 @@
+{% set address %}
+  {{appAddress({ address: data.personalDetails.address })}}
+{% endset %}
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Your name"
+      },
+      value: {
+        text: data.personalDetails.firstName + " " + data.personalDetails.lastName
+      },
+      actions: {
+        items: [
+          {
+            href: '/application/edit-personal-details/name',
+            text: "Change",
+            visuallyHiddenText: "Your name"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Phone number"
+      },
+      value: {
+        text: data.personalDetails.telephone
+      },
+      actions: {
+        items: [
+          {
+            href: '/application/edit-personal-details/telephone',
+            text: "Change",
+            visuallyHiddenText: "Phone number"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Address"
+      },
+      value: {
+        html: address
+      },
+      actions: {
+        items: [
+          {
+            href: "/application/edit-personal-details/address",
+            text: "Change",
+            visuallyHiddenText: "Address"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
