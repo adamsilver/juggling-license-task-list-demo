@@ -40,8 +40,8 @@
             text: "Evidence",
             href: "/application/edit-evidence/has-evidence",
             tag: {
-              colour: "grey",
-              text: "Not started"
+              colour: data.evidence.status | statusColour,
+              text: data.evidence.status or "Not started"
             }
           }]
         }]

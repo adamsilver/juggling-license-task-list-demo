@@ -47,6 +47,10 @@ module.exports = router => {
     }
   })
 
+  router.post('/application/edit-evidence/check', (req, res) => {
+    res.redirect('/application')
+  })
+
   router.get('/application/edit-evidence/:fileId/delete', (req, res) => {
     let file = req.session.data.evidence.files[req.params.fileId]
     res.render('application/edit-evidence/delete', {
