@@ -1,0 +1,37 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Application sent" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukPanel({
+        titleText: "Application sent",
+        html: "Your reference number<br><strong>HDJ2123F</strong>"
+      }) }}
+
+      <p>
+        We have sent you a confirmation email.
+      </p>
+
+      <h2 class="govuk-heading-m">
+        What happens next
+      </h2>
+
+      <p>
+        We've sent your application to the Juggling Regulation Office.
+      </p>
+
+      <p>
+        They will contact you about the outcome of your application.
+      </p>
+
+      <h2 class="govuk-heading-m">
+        Give feedback (takes 30 seconds)
+      </h2>
+
+      <p> <a href="#"> Start survey </a> </p>
+    </div>
+  </div>
+{% endblock %}
