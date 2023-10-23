@@ -1,3 +1,5 @@
+const appHelper = require('../../helpers/application-helper')
+
 module.exports = router => {
 
   router.get('/application', (req, res) => {
@@ -18,7 +20,14 @@ module.exports = router => {
         }
       }
 
+      let personalDetailsStatus = appHelper.getPersonalDetailsStatus(req.session.data)
+      let experienceStatus = appHelper.getExperienceStatus(req.session.data)
+      let evidenceStatus = appHelper.getEvidenceStatus(req.session.data)
+
       res.render('application/show', {
+        personalDetailsStatus,
+        experienceStatus,
+        evidenceStatus,
         completedSectionsCount
       })
     }
