@@ -25,7 +25,7 @@
             visuallyHiddenText: "if you have evidence to upload"
           }
         ]
-      }
+      } if not data.sentDate
     },
     {
       key: {
@@ -42,7 +42,7 @@
             visuallyHiddenText: "uploaded evidence"
           }
         ]
-      }
+      } if not data.sentDate
     } if data.evidence.hasEvidence == 'Yes'
   ]
 }) }}
