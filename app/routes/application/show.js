@@ -29,10 +29,16 @@ module.exports = router => {
         personalDetailsPage = 'check'
       }
 
+      let experiencePage = 'juggling-balls'
+      if(experienceStatus != 'Not started') {
+        experiencePage = 'check'
+      }
+
       res.render('application/show', {
         personalDetailsStatus,
         personalDetailsPage,
         experienceStatus,
+        experiencePage,
         evidenceStatus,
         completedSectionsCount
       })

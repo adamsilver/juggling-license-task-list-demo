@@ -56,3 +56,23 @@ exports.getFirstUnansweredQuestionFromPersonalDetails = (data) => {
 
   return null
 }
+
+exports.getFirstUnansweredQuestionFromExperience = (data) => {
+  let numberOfBalls = _.get(data, 'experience.numberOfBalls')
+  let trick = _.get(data, 'experience.trick')
+  let startDate = _.get(data, 'experience.startDate')
+
+  if(!numberOfBalls) {
+    return 'juggling-balls'
+  }
+
+  if(!trick) {
+    return 'juggling-trick'
+  }
+
+  if(!startDate) {
+    return 'start-date'
+  }
+
+  return null
+}
