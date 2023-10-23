@@ -76,3 +76,20 @@ exports.getFirstUnansweredQuestionFromExperience = (data) => {
 
   return null
 }
+
+exports.getFirstUnansweredQuestionFromEvidence = (data) => {
+  let hasEvidence = _.get(data, 'evidence.hasEvidence')
+  let files = _.get(data, 'evidence.files')
+
+  if(!hasEvidence) {
+    return 'has-evidence'
+  }
+
+  if(hasEvidence == 'Yes') {
+    if(!files) {
+      return 'upload'
+    }
+  }
+
+  return null
+}

@@ -20,8 +20,20 @@
         {{pageName}}
       </h1>
 
+      {% if evidenceFirstUnansweredQuestion %}
+        <div class="govuk-inset-text app-prompt">
+      {% endif %}
       {% include "./_answers.html" %}
+      {% if evidenceFirstUnansweredQuestion %}
+          <p class="app-prompt__text">You must complete evidence before you can send your application.</p>
+          {{ govukButton({
+            text: "Complete evidence",
+            href: '/application/edit-evidence/' + evidenceFirstUnansweredQuestion
+          }) }}
+        </div>
+      {% endif %}
 
+      {% if not evidenceFirstUnansweredQuestion %}
       <form method="post" novalidate>
 
         {{ govukRadios({
@@ -53,6 +65,7 @@
           text: "Save and continue"
         }) }}
       </form>
+      {% endif %}
 
 
     </div>

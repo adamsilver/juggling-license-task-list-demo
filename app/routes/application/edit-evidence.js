@@ -1,5 +1,6 @@
 const _ = require('lodash')
 const { v4: uuidv4 } = require('uuid')
+const appHelper = require('../../helpers/application-helper')
 
 module.exports = router => {
 
@@ -45,6 +46,14 @@ module.exports = router => {
     } else {
       res.redirect('/application/edit-evidence/check')
     }
+  })
+
+  router.get('/application/edit-evidence/check', (req, res) => {
+    let evidenceFirstUnansweredQuestion = appHelper.getFirstUnansweredQuestionFromEvidence(req.session.data)
+
+    res.render('application/edit-evidence/check', {
+      evidenceFirstUnansweredQuestion
+    })
   })
 
   router.post('/application/edit-evidence/check', (req, res) => {
