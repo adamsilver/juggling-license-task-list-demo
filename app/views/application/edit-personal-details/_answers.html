@@ -20,7 +20,7 @@
           }
         ]
       } if not data.sentDate
-    },
+    } if data.personalDetails.firstName,
     {
       key: {
         text: "Phone number"
@@ -37,7 +37,7 @@
           }
         ]
       } if not data.sentDate
-    },
+    } if data.personalDetails.telephone,
     {
       key: {
         text: "Address"
@@ -54,6 +54,6 @@
           }
         ]
       } if not data.sentDate
-    }
+    } if data.personalDetails.address.line1
   ]
 }) }}

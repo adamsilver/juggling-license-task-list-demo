@@ -24,8 +24,14 @@ module.exports = router => {
       let experienceStatus = appHelper.getExperienceStatus(req.session.data)
       let evidenceStatus = appHelper.getEvidenceStatus(req.session.data)
 
+      let personalDetailsPage = 'name'
+      if(personalDetailsStatus != 'Not started') {
+        personalDetailsPage = 'check'
+      }
+
       res.render('application/show', {
         personalDetailsStatus,
+        personalDetailsPage,
         experienceStatus,
         evidenceStatus,
         completedSectionsCount

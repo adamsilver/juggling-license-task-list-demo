@@ -36,3 +36,23 @@ exports.getEvidenceStatus = (data) => {
 
   return 'Not started'
 }
+
+exports.getFirstUnansweredQuestionFromPersonalDetails = (data) => {
+  let firstName = _.get(data, 'personalDetails.firstName')
+  let telephone = _.get(data, 'personalDetails.telephone')
+  let addressLine1 = _.get(data, 'personalDetails.address.line1')
+
+  if(!firstName) {
+    return 'name'
+  }
+
+  if(!telephone) {
+    return 'telephone'
+  }
+
+  if(!addressLine1) {
+    return 'address'
+  }
+
+  return null
+}
