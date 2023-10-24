@@ -60,7 +60,7 @@ exports.getFirstUnansweredQuestionFromPersonalDetails = (data) => {
 exports.getFirstUnansweredQuestionFromExperience = (data) => {
   let numberOfBalls = _.get(data, 'experience.numberOfBalls')
   let trick = _.get(data, 'experience.trick')
-  let startDate = _.get(data, 'experience.startDate')
+  let startDateDay = _.get(data, 'experience.startDate.day')
 
   if(!numberOfBalls) {
     return 'juggling-balls'
@@ -70,7 +70,7 @@ exports.getFirstUnansweredQuestionFromExperience = (data) => {
     return 'juggling-trick'
   }
 
-  if(!startDate) {
+  if(!startDateDay) {
     return 'start-date'
   }
 

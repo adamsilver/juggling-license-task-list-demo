@@ -19,13 +19,46 @@
 
 
       <h2 class="govuk-heading-m">Personal details</h2>
+      {% if personalDetailsFirstUnansweredQuestion %}
+        <div class="govuk-inset-text app-prompt">
+      {% endif %}
       {% include "./edit-personal-details/_answers.html" %}
+      {% if personalDetailsFirstUnansweredQuestion %}
+          <p class="app-prompt__text">You must complete personal details before you can send your application.</p>
+          {{ govukButton({
+            text: "Complete personal details",
+            href: '/application/edit-personal-details/' + personalDetailsFirstUnansweredQuestion
+          }) }}
+        </div>
+      {% endif %}
 
       <h2 class="govuk-heading-m">Juggling experience</h2>
+      {% if experienceFirstUnansweredQuestion %}
+        <div class="govuk-inset-text app-prompt">
+      {% endif %}
       {% include "./edit-experience/_answers.html" %}
+      {% if experienceFirstUnansweredQuestion %}
+          <p class="app-prompt__text">You must complete juggling experience before you can send your application.</p>
+          {{ govukButton({
+            text: "Complete juggling experience",
+            href: '/application/edit-experience/' + experienceFirstUnansweredQuestion
+          }) }}
+        </div>
+      {% endif %}
 
       <h2 class="govuk-heading-m">Evidence</h2>
+       {% if evidenceFirstUnansweredQuestion %}
+        <div class="govuk-inset-text app-prompt">
+      {% endif %}
       {% include "./edit-evidence/_answers.html" %}
+      {% if evidenceFirstUnansweredQuestion %}
+          <p class="app-prompt__text">You must complete evidence before you can send your application.</p>
+          {{ govukButton({
+            text: "Complete evidence",
+            href: '/application/edit-evidence/' + evidenceFirstUnansweredQuestion
+          }) }}
+        </div>
+      {% endif %}
 
       <h2 class="govuk-heading-m">
         Declaration
