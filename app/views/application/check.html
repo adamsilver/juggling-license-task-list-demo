@@ -11,21 +11,58 @@
 
 {% block content %}
 
+  {{ govukErrorSummary({
+    titleText: "There’s a problem",
+    errorList: errorsList
+  }) if errorsList.length }}
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">
         {{pageName}}
       </h1>
 
-
-      <h2 class="govuk-heading-m">Personal details</h2>
+      <h2 class="govuk-heading-m" id="app-personal-details" tabindex="-1">Personal details</h2>
+      {% if personalDetailsPage %}
+        <div class="govuk-inset-text app-prompt {% if errorsList.length %}app-prompt--error{% endif %}">
+      {% endif %}
       {% include "./edit-personal-details/_answers.html" %}
+      {% if personalDetailsPage %}
+          <p class="app-prompt__text">You must complete personal details before you can send your application.</p>
+          {{ govukButton({
+            text: "Complete personal details",
+            href: '/application/edit-personal-details/' + personalDetailsPage
+          }) }}
+        </div>
+      {% endif %}
 
-      <h2 class="govuk-heading-m">Juggling experience</h2>
+      <h2 class="govuk-heading-m" id="app-experience" tabindex="-1">Juggling experience</h2>
+      {% if experienceFirstPage %}
+        <div class="govuk-inset-text app-prompt {% if errorsList.length %}app-prompt--error{% endif %}">
+      {% endif %}
       {% include "./edit-experience/_answers.html" %}
+      {% if experienceFirstPage %}
+          <p class="app-prompt__text">You must complete juggling experience before you can send your application.</p>
+          {{ govukButton({
+            text: "Complete juggling experience",
+            href: '/application/edit-experience/' + experienceFirstPage
+          }) }}
+        </div>
+      {% endif %}
 
-      <h2 class="govuk-heading-m">Evidence</h2>
+      <h2 class="govuk-heading-m" id="app-evidence" tabindex="-1">Evidence</h2>
+       {% if evidencePage %}
+        <div class="govuk-inset-text app-prompt {% if errorsList.length %}app-prompt--error{% endif %}">
+      {% endif %}
       {% include "./edit-evidence/_answers.html" %}
+      {% if evidencePage %}
+          <p class="app-prompt__text">You must complete evidence before you can send your application.</p>
+          {{ govukButton({
+            text: "Complete evidence",
+            href: '/application/edit-evidence/' + evidencePage
+          }) }}
+        </div>
+      {% endif %}
 
       <h2 class="govuk-heading-m">
         Declaration
@@ -44,7 +81,6 @@
           text: "Agree and send application"
         }) }}
       </form>
-
 
     </div>
   </div>
