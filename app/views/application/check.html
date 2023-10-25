@@ -17,15 +17,47 @@
         {{pageName}}
       </h1>
 
-
       <h2 class="govuk-heading-m">Personal details</h2>
+      {% if personalDetailsPage %}
+        <div class="govuk-inset-text app-prompt">
+      {% endif %}
       {% include "./edit-personal-details/_answers.html" %}
+      {% if personalDetailsPage %}
+          <p class="app-prompt__text">You must complete personal details before you can send your application.</p>
+          {{ govukButton({
+            text: "Complete personal details",
+            href: '/application/edit-personal-details/' + personalDetailsPage
+          }) }}
+        </div>
+      {% endif %}
 
       <h2 class="govuk-heading-m">Juggling experience</h2>
+      {% if experiencePage %}
+        <div class="govuk-inset-text app-prompt">
+      {% endif %}
       {% include "./edit-experience/_answers.html" %}
+      {% if experiencePage %}
+          <p class="app-prompt__text">You must complete juggling experience before you can send your application.</p>
+          {{ govukButton({
+            text: "Complete juggling experience",
+            href: '/application/edit-experience/' + experiencePage
+          }) }}
+        </div>
+      {% endif %}
 
       <h2 class="govuk-heading-m">Evidence</h2>
+      {% if evidencePage %}
+        <div class="govuk-inset-text app-prompt">
+      {% endif %}
       {% include "./edit-evidence/_answers.html" %}
+      {% if evidencePage %}
+          <p class="app-prompt__text">You must complete evidence before you can send your application.</p>
+          {{ govukButton({
+            text: "Complete evidence",
+            href: '/application/edit-evidence/' + evidencePage
+          }) }}
+        </div>
+      {% endif %}
 
       <h2 class="govuk-heading-m">
         Declaration
