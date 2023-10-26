@@ -10,3 +10,11 @@
     font-weight: bold;
   }
 }
+
+.app-prompt--error {
+  border-left: 5px solid govuk-colour('red');
+
+  .app-prompt__text {
+    color: govuk-colour('red');
+  }
+}

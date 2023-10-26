@@ -11,15 +11,20 @@
 
 {% block content %}
 
+  {{ govukErrorSummary({
+    titleText: "There’s a problem",
+    errorList: errorList
+  }) if errorList.length }}
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">
         {{pageName}}
       </h1>
 
-      <h2 class="govuk-heading-m">Personal details</h2>
+      <h2 class="govuk-heading-m" id="app-personal-details">Personal details</h2>
       {% if personalDetailsPage %}
-        <div class="govuk-inset-text app-prompt">
+        <div class="govuk-inset-text app-prompt {% if errorList.length %}app-prompt--error{% endif %}">
       {% endif %}
       {% include "./edit-personal-details/_answers.html" %}
       {% if personalDetailsPage %}
@@ -31,9 +36,9 @@
         </div>
       {% endif %}
 
-      <h2 class="govuk-heading-m">Juggling experience</h2>
+      <h2 class="govuk-heading-m" id="app-experience">Juggling experience</h2>
       {% if experiencePage %}
-        <div class="govuk-inset-text app-prompt">
+        <div class="govuk-inset-text app-prompt {% if errorList.length %}app-prompt--error{% endif %}">
       {% endif %}
       {% include "./edit-experience/_answers.html" %}
       {% if experiencePage %}
@@ -45,9 +50,9 @@
         </div>
       {% endif %}
 
-      <h2 class="govuk-heading-m">Evidence</h2>
+      <h2 class="govuk-heading-m" id="app-evidence">Evidence</h2>
       {% if evidencePage %}
-        <div class="govuk-inset-text app-prompt">
+        <div class="govuk-inset-text app-prompt {% if errorList.length %}app-prompt--error{% endif %}">
       {% endif %}
       {% include "./edit-evidence/_answers.html" %}
       {% if evidencePage %}
